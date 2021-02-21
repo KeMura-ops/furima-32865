@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type     | Options    |
-|--------------------|----------|------------|
-| nickname           | string   | null:false |
-| email              | string   | null:false |
-| encrypted_password | string   | null:false |
-| first_name         | string   | null:false |
-| last_name          | string   | null:false |
-| first_zenkaku      | string   | null:false |
-| last_zenkaku       | string   | null:false |
-| birthday           | datetime | null:false |
+| Column             | Type   | Options                  |
+|--------------------|--------|--------------------------|
+| nickname           | string | null:false               |
+| email              | string | null:false, unique: true |
+| encrypted_password | string | null:false               |
+| first_name         | string | null:false               |
+| last_name          | string | null:false               |
+| first_zenkaku      | string | null:false               |
+| last_zenkaku       | string | null:false               |
+| birthday           | date   | null:false               |
 
 
 
@@ -24,12 +24,12 @@
 | Column             | Type       | Options           |
 |--------------------|------------|-------------------|
 | name               | string     | null:false        |
-| item_desc          | string     | null:false        |
-| category           | string     | null:false        |
-| condition          | string     | null:false        |
-| delivery_fee       | integer    | null:false        |
-| delivery_area      | string     | null:false        |
-| delivery_time      | datetime   | null:false        |
+| item_desc          | text       | null:false        |
+| category_id        | integer    | null:false        |
+| condition_id       | integer    | null:false        |
+| delivery_fee_id    | integer    | null:false        |
+| delivery_area_id   | integer    | null:false        |
+| delivery_time_id   | integer    | null:false        |
 | price              | integer    | null:false        |
 | user               | references | foreign_key: true |
 
@@ -56,14 +56,15 @@
 
 ## addresses テーブル
 
-| Column        | Type       | Options           |
-|---------------|------------|-------------------|
-| postal_code   | string     | null:false        |
-| delivery_area | string     | null:false        |
-| municipality  | string     | null:false        |
-| address       | string     | null:false        |
-| phone_number  | string     | null:false        |
-| orders        | references | foreign_key: true |
+| Column           | Type       | Options           |
+|------------------|------------|-------------------|
+| postal_code      | string     | null:false        |
+| delivery_area_id | integer    | null:false        |
+| municipality     | string     | null:false        |
+| street_address   | string     | null:false        |
+| building_name    | string     |                   |
+| phone_number     | string     | null:false        |
+| order            | references | foreign_key: true |
 
 
 
