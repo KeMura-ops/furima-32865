@@ -9,8 +9,8 @@
 | encrypted_password | string | null:false               |
 | first_name         | string | null:false               |
 | last_name          | string | null:false               |
-| first_zenkaku      | string | null:false               |
-| last_zenkaku       | string | null:false               |
+| first_reading      | string | null:false               |
+| last_reading       | string | null:false               |
 | birthday           | date   | null:false               |
 
 
