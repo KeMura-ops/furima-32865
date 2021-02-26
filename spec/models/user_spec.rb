@@ -98,13 +98,12 @@ RSpec.describe User, type: :model do
       it '本名はfirst_readingがなければ登録できない' do
         @user.first_reading = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("First reading can't be blank",
-          "First reading Full-width katakana characters")
+        expect(@user.errors.full_messages).to include("First reading can't be blank")
       end
       it '本名はlast_readingがなければ登録できない' do
         @user.last_reading = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last reading can't be blank", "Last reading Full-width katakana characters")
+        expect(@user.errors.full_messages).to include("Last reading can't be blank")
       end
       it 'first_readingはカタカナでなければ登録できない' do
         @user.first_reading = '隆太郎'
