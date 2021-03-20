@@ -7,7 +7,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    
+    @item_purchase = ItemPurchase.new(order_params)
+    if @item_purchase.valid?
+      @item_purchase.save
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   private

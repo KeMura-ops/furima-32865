@@ -9,4 +9,9 @@ class ItemPurchase
   end
 
   validates :delivery_area_id, numericality: { other_than: 1 }
+
+  def save
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Address.create(postal_code: postal_code, delivery_area_id: delivery_area_id, municipality: municipality, street_address: street_address, building_name: building_name, phone_number: phone_number, order_id: order.id)
+  end
 end
