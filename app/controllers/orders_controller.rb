@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @item_purchase = ItemPurchase.new(order_params)
     if @item_purchase.valid?
       @item_purchase.save
@@ -19,7 +20,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:item_purchase).permit(:postal_code, :delivery_area_id, :municipality, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:item_purchase).permit(:postal_code, :delivery_area_id, :municipality, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_item
