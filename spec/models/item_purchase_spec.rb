@@ -32,6 +32,11 @@ RSpec.describe ItemPurchase, type: :model do
         @item_purchase.valid?
         expect(@item_purchase.errors.full_messages).to include("Item can't be blank")
       end
+      it 'tokenが存在していないと購入できない' do
+        @item_purchase.token = ''
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Token can't be blank")
+      end
       it 'postal_codeが空では保存できない' do
         @item_purchase.postal_code = ''
         @item_purchase.valid?
