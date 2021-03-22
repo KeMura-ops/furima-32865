@@ -1,6 +1,6 @@
 class ItemPurchase
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :delivery_area_id, :municipality, :street_address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :token, :postal_code, :delivery_area_id, :municipality, :street_address, :building_name, :phone_number
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }

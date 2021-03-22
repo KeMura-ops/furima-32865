@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @item_purchase = ItemPurchase.new(order_params)
     if @item_purchase.valid?
       @item_purchase.save
