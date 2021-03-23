@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
+  before_action :user_match, only: [:index, :create]
+  before_action :sold_out_item, only: [:index, :create]
 
   def index
     @item_purchase = ItemPurchase.new
@@ -34,5 +36,17 @@ class OrdersController < ApplicationController
       card: order_params[:token],           # 生成されたトークン
       currency: 'jpy'                       # 通貨の種類(日本円)
     )
+  end
+
+  def user_match
+    if @item.user.id == current_user.id
+      redirect_to root_path
+    end
+  end
+
+  def sold_out_item
+    if @item.order
+      redirect_to root_path
+    end
   end
 end
