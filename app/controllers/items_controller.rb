@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def user_match
-    unless @item.user.id == current_user.id
+    unless @item.user.id == current_user.id && @item.order == nil
       redirect_to action: :index
     end
   end
